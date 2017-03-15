@@ -67,6 +67,7 @@ myApp.factory('TaskFactory', ['$http', function($http) {
 
   // this is the public API, if it's not in here, your controller won't see it
   return {
+    updateTaskDescription: updateTask,
     allTasks: factoryTasks,
     getTasks: getTasks,
     addTask: addTask,

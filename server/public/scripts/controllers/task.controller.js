@@ -26,4 +26,8 @@ myApp.controller('TaskController', ['TaskFactory', function(TaskFactory){
     TaskFactory.updateTask(task);
   }
 
+  self.updateTaskDescription = function(task) {
+    TaskFactory.updateTaskDescription(task);
+  }
+
 }]);

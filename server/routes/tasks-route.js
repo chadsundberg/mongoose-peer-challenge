@@ -85,6 +85,30 @@ router.put('/complete/:id', function(req, res) {
   );
 });
 
+router.put('/:id', function(req, res) {
+  var taskToUpdateId = req.params.id;
+  var taskObject = req.body;
+  console.log('hit complete route');
+  console.log('here is the id to complete ->', taskToUpdateId);
+
+  // db query
+  Task.findByIdAndUpdate(
+    {_id: taskToUpdateId},
+    {
+      $set: {description: taskObject.description}
+    },
+    function(err, result) {
+      if(err) {
+        console.log('Error completing task:', err);
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(200);
+      }
+    }
+  );
+});
+
+
 // create a new task in the db
 router.put('/uncomplete/:id', function(req, res) {
   var taskToUncompleteId = req.params.id;
